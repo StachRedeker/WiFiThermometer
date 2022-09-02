@@ -57,12 +57,12 @@ to your network credentials.
 
 Change `IPAddress ip(192, 168, 178, 155);` to the IP address that you want the server to use in your network. Make a note of this address, because you will need it later. Choose an IP address that is currently unused and/or that is outside your router's DHCP range. Pro tip: use your router's DHCP to assign a static IP address to the MAC address of the ESP8266. The MAC address will print in the console and on the 1602 LCD screen during the start-up cyclus if `server.ino` is runned. 
 
-Lastly (and this is very important), change your gateway and subnet:
+Lastly (**and this is very important**), change your gateway and subnet:
 ```
-IPAddress gateway(192,168,178,1);           // gateway of the WiFi network --> see router manual
-IPAddress subnet(255,255,255,0);          // subnet mask of Wifi network --> see router settings
+IPAddress gateway(192,168,178,1);           // gateway of the WiFi network --> see router, or router's manual
+IPAddress subnet(255,255,255,0);          // subnet mask of Wifi network --> see router settings, or router's manual
 ```
-The gateway is the internal IP address of the router. This can differ between models, and system will not run with an incorrect gateway. You can find the gateway IP in the router's manual or online. The subnet can be found in the router settings.
+The gateway is the internal IP address of the router. **This can differ between models, and system will not run with an incorrect gateway.** You can find the gateway IP in the router's manual or online. The subnet can be found in the router settings.
 
 ### Client setup
 Connect your ESP8266 to your laptop or computer. Open the `client.ino` script. 
@@ -82,6 +82,12 @@ And change `IPAddress server(192,168,178,155);` to the IP address that you noted
 Once set up and powered on, the system will run as long as the WiFi network can be received by the server and the client. During transfer, the client draws around 0.02A at 5V and the server draws around 0.05A at 5V. Your milage may vary depending on e.g. the used microcontrollers, but powering the system from batteries is definitely an option.
 
 ## Limitations
+The biggest limitation is that only one sensor can be used. If we were to broadcast temperature **and** humidity, for example, the server would not know which received value corresponds to temperature, and which to humidity. Since this was a project for fun, I am not going to implement a script that works with multiple sensor readings. It would make for a fun engineering challenge, though. My approach would be to append something to every transfer, and use the appended piece to figure out what kind of data was sent.
 
 
 ## Sources and acknowledgements 
+[I used this Instructable from Gyalu1 for parts of the wireless communication.](https://www.instructables.com/WiFi-Communication-Between-Two-ESP8266-Based-MCU-T/)
+
+[And I recycled parts of my own code for the temperature readings.](https://github.com/StachRedeker/Temperatuurgevoelige-Ventilator)
+
+[Lastly, if you live in the Netherlands, this could be a useful start at determining the router's IP address.](https://www.wifiwijs.nl/ip-adres-router/)
