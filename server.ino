@@ -96,7 +96,7 @@ void loop () {
       lcd.setCursor(0, 1);
       lcd.print(temperature);
     }
-    client.stop();                // tarminates the connection with the client
+    client.stop();                // terminates the connection with the client
   }
   
 }
