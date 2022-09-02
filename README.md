@@ -15,13 +15,8 @@ For my version of the system, you will need:
 - 1602 LCD display with necessary potentiometer to adjust the brightness
 - wires, breadboard, and suitable power supplies
 
-### Client setup
-The client is responsible for reading the sensor values and sending them to the server. You can use a 3.3V or a 5V board for this task.
-
-Connect the DHT11 temperature sensor to the board. Connect power to power, ground to ground, and the signal pin to an arbitrary digital pin of the ESP8266.
-
 ### Server setup
-The server is responsible for receiving the sensor values and displaying them on a LCD screen. Use a 5V board for the server, since the display requires 5V to work.
+The server is responsible for receiving the sensor values from the client and displaying them on a LCD screen. Use a 5V board for the server, since the display requires 5V to work.
 
 Connect the LCD screen:
 - VSS to GND
@@ -37,10 +32,56 @@ Connect the LCD screen:
 - A to 5V (check if current limiting resistor is required)
 - K to GND
 
+### Client setup
+The client is responsible for reading the sensor values and sending them to the server. You can use a 3.3V or a 5V board for this task.
+
+Connect the DHT11 temperature sensor to the board. Connect power to power, ground to ground, and the signal pin to an arbitrary digital pin of the ESP8266.
+
 That's all there is!
 
 ## Software setup
 
+Fire up your Arduino IDE!
+
+### Server setup
+Connect your ESP8266 to your laptop or computer. Open the `server.ino` script. 
+
+Change 
+
+```
+char ssid[] = "SSID";
+char pass[] = "PSSWRD";
+```
+
+to your network credentials.
+
+Change `IPAddress ip(192, 168, 178, 155);` to the IP address that you want the server to use in your network. Make a note of this address, because you will need it later. Choose an IP address that is currently unused and/or that is outside your router's DHCP range. Pro tip: use your router's DHCP to assign a static IP address to the MAC address of the ESP8266. The MAC address will print in the console and on the 1602 LCD screen during the start-up cyclus if `server.ino` is runned. 
+
+Lastly (and this is very important), change your gateway and subnet:
+```
+IPAddress gateway(192,168,178,1);           // gateway of the WiFi network --> see router manual
+IPAddress subnet(255,255,255,0);          // subnet mask of Wifi network --> see router settings
+```
+The gateway is the internal IP address of the router. This can differ between models, and system will not run with an incorrect gateway. You can find the gateway IP in the router's manual or online. The subnet can be found in the router settings.
+
+### Client setup
+Connect your ESP8266 to your laptop or computer. Open the `client.ino` script. 
+
+Again, change 
+
+```
+char ssid[] = "SSID";
+char pass[] = "PSSWRD";
+```
+
+to your network credentials.
+
+And change `IPAddress server(192,168,178,155);` to the IP address that you noted down during the set up of the server. `#define SLEEP_TIME 120` can be changed to alter the time between measurement. 
+
+## Usage
+Once set up and powered on, the system will run as long as the WiFi network can be received by the server and the client. During transfer, the client draws around 0.02A at 5V and the server draws around 0.05A at 5V. Your milage may vary depending on e.g. the used microcontrollers, but powering the system from batteries is definitely an option.
+
+## Limitations
 
 
 ## Sources and acknowledgements 
