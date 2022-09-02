@@ -14,8 +14,8 @@ WiFiServer server(80);
 
 // Connection settings
 IPAddress ip(192, 168, 178, 155);            // wanted IP address of the server
-IPAddress gateway(192,168,178,1);           // gateway of the WiFi network --> see: https://www.wifiwijs.nl/ip-adres-router/
-IPAddress subnet(255,255,255,0);          // subnet mask of Wifi network --> see router settings
+IPAddress gateway(192,168,178,1);           // gateway of the WiFi network --> see router, or router's manual
+IPAddress subnet(255,255,255,0);          // subnet mask of Wifi network --> see router settings, or router's manual
 
 // LCD SCREEN
 #define LCD4 2  // D4
