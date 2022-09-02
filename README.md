@@ -10,24 +10,37 @@ This project idea may seem simple at first, but designing the final system was r
 ## Hardware setup
 
 For my version of the system, you will need:
-- Two ESP8266 boards, of which at least one should be able to handle a 5V output
+- two ESP8266 boards, of which at least one should be able to handle a 5V output
+- DHT11 temperature sensor (a newer generation is also fine)
+- 1602 LCD display with necessary potentiometer to adjust the brightness
+- wires, breadboard, and suitable power supplies
 
+### Client setup
+The client is responsible for reading the sensor values and sending them to the server. You can use a 3.3V or a 5V board for this task.
 
+Connect the DHT11 temperature sensor to the board. Connect power to power, ground to ground, and the signal pin to an arbitrary digital pin of the ESP8266.
 
-```sh
-npm install my-crazy-module --save
-```
+### Server setup
+The server is responsible for receiving the sensor values and displaying them on a LCD screen. Use a 5V board for the server, since the display requires 5V to work.
 
-Windows:
+Connect the LCD screen:
+- VSS to GND
+- VDD to 5V
+- V0 through potmeter to GND
+- RS to D3
+- RW to GND
+- E to D2
+- D4 to D4
+- D5 to D5
+- D6 to D6
+- D7 to D7
+- A to 5V (check if current limiting resistor is required)
+- K to GND
 
-```sh
-edit autoexec.bat
-```
+That's all there is!
 
 ## Software setup
 
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
 
-_For more examples and usage, please refer to the [Wiki][wiki]._
 
 ## Sources and acknowledgements 
