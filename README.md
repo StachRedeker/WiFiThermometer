@@ -39,6 +39,8 @@ Connect the DHT11 temperature sensor to the board. Connect power to power, groun
 
 That's all there is!
 
+![Breadboard realisation](breadboard.jpg)
+
 ## Software setup
 
 Fire up your Arduino IDE!
