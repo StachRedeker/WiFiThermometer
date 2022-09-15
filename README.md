@@ -78,7 +78,7 @@ char pass[] = "PSSWRD";
 
 to your network credentials.
 
-And change `IPAddress server(192,168,178,155);` to the IP address that you noted down during the set up of the server. Use `#define DHTPIN 5` to describe the pin where you attached the temperature sensor. Warning: use a pin layout diagram to determine the pin number. In this case, `5` means `D1`. `#define SLEEP_TIME 120` (in seconds) can be changed to alter the time between measurements. 
+And change `IPAddress server(192,168,178,155);` to the IP address that you noted down during the set up of the server. Use `#define DHTPIN 5` to describe the pin where you attached the temperature sensor. Warning: use a pin layout diagram to determine the pin number. In this case, `5` means `D1`. `#define SLEEP_TIME 120` can be changed to alter the time (in seconds) between measurements. 
 
 ## Usage
 Once set up and powered on, the system will run as long as the server and the client can receive the WiFi network. During a transfer, the client draws around 0.02A at 5V, and the server draws around 0.05A at 5V. Your mileage may vary depending on e.g. the used microcontrollers, but powering the system from batteries is definitely an option.
