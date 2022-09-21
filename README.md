@@ -41,6 +41,8 @@ That's all there is!
 
 ![Breadboard realisation](breadboard.jpg)
 
+Purple: client (with temperature sensor). Green: server (with 1602 LCD).
+
 ## Software setup
 
 Fire up your Arduino IDE!
